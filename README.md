@@ -5,7 +5,7 @@ Table of Contents
 -----------------
 * [Licensing](#Licensing)
 * [Overview](#Overview)
-* [Design Consideration](#Design-Consideration)
+* [Design Consideration](#Design-Considerations)
 * [Relationship to FORTIFY_SOURCE](#Relationship-to-FORTIFY_SOURCE)
 * [How to Build OpenOSC Library](#How-to-Build-OpenOSC-Library)
 * [How to Build Packages with OpenOSC Library](#How-to-Build-Packages-with-OpenOSC-Library)
@@ -122,7 +122,7 @@ The build system for the OpenOSC library is the well known *GNU build
 system*, a.k.a. Autotools. This system is well understood and supported
 by many different platforms and distributions which should allow this
 library to be built on a wide variety of platforms. See the
-xref:tested-platforms[``Tested Platforms''] section for details on what
+``Tested Platforms'' section for details on what
 platforms this library was tested on during its development.
 
 * Building

@@ -5,11 +5,11 @@ Table of Contents
 -----------------
 * [Licensing](#Licensing)
 * [Overview](#Overview)
-* [Design Consideration](#Design-consideration)
-* [Relationship to FORTIFY_SOURCE][abc](#Relationship_to_FORTIFY_SOURCE)
-* [How to Build OpenOSC Library](#How_to_Build_OpenOSC_Library)
-* [How to Build Packages with OpenOSC Library](#How_to_Build_Packages_with_OpenOSC_Library)
-* [Tested Platforms](#iTested-Platforms)
+* [Design Consideration](#Design-Consideration)
+* [Relationship to FORTIFY_SOURCE](#Relationship-to-FORTIFY_SOURCE)
+* [How to Build OpenOSC Library](#How-to-Build-OpenOSC-Library)
+* [How to Build Packages with OpenOSC Library](#How-to-Build-Packages-with-OpenOSC-Library)
+* [Tested Platforms](#Tested-Platforms)
 * [Known Issues](#Known-Issues)
 * [Bibliography](#References)
 
@@ -217,7 +217,6 @@ collect the OSC-METRIC report:
 
     $ oscmetrics.py -bwv -d directory-that-contains-your-binaries
 
-[[tested-platforms]]
 Tested Platforms
 ----------------
 
@@ -237,8 +236,8 @@ Known Issues
 1. If you are building the library from the git repository you will have to
    first install autotools, then run autoreconf to create the configure script.
 
-[bibliography]
 References
-- [[[1]]] OpenOSC: Open Source Object Size Checking Library With Built-in
+----------
+- [1] OpenOSC: Open Source Object Size Checking Library With Built-in
 Metrics, *Yongkui Han, Pankil Shah, Van Nguyen, Ling Ma, Richard Livingston
 (Cisco Systems)*

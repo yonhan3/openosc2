@@ -1,6 +1,11 @@
 OpenOSC Library - README
 =======================
 :toc:
+* [Table of Contents](#table-of-contents)
+* [Licensing](#Licensing)
+* [Overview](#Overview)
+* [Design Consideration](#design-consideration)
+* [LICENSE](#license)
 
 
 Licensing
@@ -46,8 +51,8 @@ the package build environment.
 
 Two OSC function mapping methods are supported in OpenOSC:
 
-#define OPENOSC_ASM_LABEL_REDIRECT_METHOD    1
-#define OPENOSC_FUNC_MACRO_REDEFINE_METHOD   2
+    #define OPENOSC_ASM_LABEL_REDIRECT_METHOD    1
+    #define OPENOSC_FUNC_MACRO_REDEFINE_METHOD   2
 
 They are two different function mapping methods. The ASM_LABEL_REDIRECT method
 uses __asm__ label to redirect an alias function to the real function at
@@ -120,14 +125,16 @@ For those familiar with autotools you can probably skip this part. For those
 not and want to get right to building the code see below. And, for those that
 need additional information see the 'INSTALL' file in the same directory.
 
-.To build you do the following:
+To build you do the following:
 
 Case 1: If you have the openosc taball, then you do:
+
     $ ./configure
     $ make
 
 Case 2: If you build from the git workspace, then please first install
 autotools, and then do:
+
     $ autoreconf -vfi
     $ ./configure
     $ make
@@ -136,15 +143,18 @@ That is, autoreconf only needs to be run if you are building from the git
 repository. Optionally, you can do `make check` if you want to run the unit
 tests.
 
-.To build RedHat RPM packages:
+To build RedHat RPM packages:
+
     $ ./configure
     $ make rpm
 
 Two OpenOSC RPM packages are generated:
-    - openosc RPM contains only the runtime library.
-    - openosc-devel RPM contains both runtime library and mapping header files.
 
-.To build Debian/Ubuntu DEB packages:
+- openosc RPM contains only the runtime library.
+- openosc-devel RPM contains both runtime library and mapping header files.
+
+To build Debian/Ubuntu DEB packages:
+
     $ ./configure
     $ make deb
 
@@ -155,11 +165,13 @@ systems. The following is used to install the library.
 
     $ sudo make install
 
-.To install RedHat RPM packages:
+To install RedHat RPM packages:
+
     $ make rpm
     $ sudo rpm -ivh openosc-devel-0.1.0-1.el7.x86_64.rpm
 
-.To install Debian/Ubuntu DEB packages:
+To install Debian/Ubuntu DEB packages:
+
     $ make deb
     $ sudo apt install openosc_0.1.0-1_amd64.deb
 
@@ -182,11 +194,11 @@ The mock tool is recommended to build RPM packages on Centos.
 
 Here is the steps to build OpenOSC-enabled RPM packages in mock:
  
-mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --init
-mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --install openosc-devel-1.0.0-1.el7.x86_64.rpm
-mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --copyin redhat-rpm-config-macros-openosc  usr/lib/rpm/redhat/macros
-mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm
-mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm2
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --init
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --install openosc-devel-1.0.0-1.el7.x86_64.rpm
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --copyin redhat-rpm-config-macros-openosc  usr/lib/rpm/redhat/macros
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm2
 
 * Enable the OSC-METRIC feature during package build
 
@@ -203,7 +215,7 @@ collect the OSC-METRIC report:
 Tested Platforms
 ----------------
 
-.The library has been tested on the following systems:
+The library has been tested on the following systems:
 - Centos 6/7/8 amd64/i386 glibc 2.12 - 2.28
 - Linux Debian 9-11 amd64/i386 glibc 2.24 - 2.28
 
@@ -220,7 +232,7 @@ Known Issues
    first install autotools, then run autoreconf to create the configure script.
 
 [bibliography]
-.References
+References
 - [[[1]]] OpenOSC: Open Source Object Size Checking Library With Built-in
 Metrics, *Yongkui Han, Pankil Shah, Van Nguyen, Ling Ma, Richard Livingston
 (Cisco Systems)*

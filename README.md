@@ -1,11 +1,17 @@
 OpenOSC Library - README
 =======================
-:toc:
-* [Table of Contents](#table-of-contents)
+
+Table of Contents
+-----------------
 * [Licensing](#Licensing)
 * [Overview](#Overview)
-* [Design Consideration](#design-consideration)
-* [LICENSE](#license)
+* [Design Consideration](#Design-consideration)
+* [Relationship to FORTIFY_SOURCE][abc](#Relationship_to_FORTIFY_SOURCE)
+* [How to Build OpenOSC Library](#How_to_Build_OpenOSC_Library)
+* [How to Build Packages with OpenOSC Library](#How_to_Build_Packages_with_OpenOSC_Library)
+* [Tested Platforms](#iTested-Platforms)
+* [Known Issues](#Known-Issues)
+* [Bibliography](#References)
 
 
 Licensing

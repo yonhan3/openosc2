@@ -78,7 +78,7 @@ the FUNC_MACRO_REDEFINE method by adding the below define to CFLAGS:
 
 New mapping method can be added as needed in future.
 
-* Built-in OSC-METRICS feature
+* *Built-in OSC-METRICS feature*
 
 The built-in OSC-METRICS feature can be enabled by the below flag to CFLAGS:
 
@@ -88,13 +88,16 @@ Additionally, the objsize-METRICS feature can be enabled by the below:
 
     CFLAGS += "-DOPENOSC_METRIC_OBJSIZE_ENABLED"
 
-You can run the oscmetrics tool to collect the OSC-METRICS:
+After building your binaries with the above CFLAGS, You can run the oscmetrics
+tool to collect the OSC-METRICS:
 
     $ tools/oscmetrics.py -bmwv -d your-dir > metrics-report.txt
 
 One trick: To generate the binary even when buffer overflow errors exist, add
 “-DOPENOSC_OVERFLOW_ERROR_OUT_DISABLE” to CFLAGS. This will just print warnings
-instead of errors at compile-time so that binary can be generated.
+instead of errors at compile-time so that binary can be generated. If you use
+"-DOPENOSC_MM=2" CFLAGS, then you can add "-DOPENOSC_METRIC_ONLY_MODE" to CFLAGS
+to collect OSC metrics only.
 
 Relationship to FORTIFY_SOURCE
 ------------------------------
@@ -125,7 +128,7 @@ built on a wide variety of platforms. See the "Tested Platforms" section
 for details on what platforms this library was tested on during its
 development.
 
-* *Building*
+1. *Building*
 
 For those familiar with autotools you can probably skip this part. For those
 not and want to get right to building the code see below. And, for those that
@@ -146,7 +149,7 @@ autotools, and then do:
     $ make
 
 That is, autoreconf only needs to be run if you are building from the git
-repository. Optionally, you can do `make check` if you want to run the unit
+repository. Optionally, you can do "make check" if you want to run the unit
 tests.
 
 To build RedHat RPM packages:
@@ -166,7 +169,7 @@ To build Debian/Ubuntu DEB packages:
     $ ./configure
     $ make deb
 
-* *Installing*
+2. *Installing*
 
 Installation must be preformed by `root`, an `Administrator' on most
 systems. The following is used to install the library.

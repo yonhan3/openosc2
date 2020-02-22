@@ -5,7 +5,7 @@ Table of Contents
 -----------------
 * [Licensing](#Licensing)
 * [Overview](#Overview)
-* [Design Consideration](#Design-Considerations)
+* [Design Considerations](#Design-Considerations)
 * [Relationship to FORTIFY_SOURCE](#Relationship-to-FORTIFY_SOURCE)
 * [How to Build OpenOSC Library](#How-to-Build-OpenOSC-Library)
 * [How to Build Packages with OpenOSC Library](#How-to-Build-Packages-with-OpenOSC-Library)
@@ -213,14 +213,14 @@ Here is the steps to build OpenOSC-enabled RPM packages in mock:
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm2
 
-* *Enable the OSC-METRIC feature during package build*
+* *Enable the OSC-METRICS feature during package build*
 
-Add below to CFLAGS to enable the OSC-METRIC feature for your package build:
+Add below to CFLAGS to enable the OSC-METRICS feature for your package build:
 
     CFLAGS += "-include openosc.h -DOPENOSC_METRIC_FEATURE_ENABLED"
 
 After building your packages, you can run the below oscmetrics.py script to
-collect the OSC-METRIC report:
+collect the OSC-METRICS report:
 
     $ oscmetrics.py -bmwv -d directory-that-contains-your-binaries
 

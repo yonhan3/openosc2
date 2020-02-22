@@ -60,9 +60,9 @@ Two OSC function mapping methods are supported in OpenOSC:
     #define OPENOSC_ASM_LABEL_REDIRECT_METHOD    1
     #define OPENOSC_FUNC_MACRO_REDEFINE_METHOD   2
 
-They are two different function mapping methods. The ASM_LABEL_REDIRECT method
-uses __asm__ label to redirect an alias function to the real function at
-assembly language level, while being different function at C language level.
+They are two different mapping methods. The ASM_LABEL_REDIRECT method uses
+"__asm__" label to redirect an alias function to the real function at assembly
+language level, while keeping them as different functions at C language level.
 The FUNC_MACRO_REDEFINE method uses macro redefining mechanism to directly
 redefine a foo function as a new openosc_foo function at C language level.
 
@@ -86,11 +86,11 @@ The built-in OSC-METRICS feature can be enabled by the below flag to CFLAGS:
 
 Additionally, the objsize-METRICS feature can be enabled by the below:
 
-    CFLAGS += "-DOPENOSC_METRIC_FEATURE_ENABLED"
+    CFLAGS += "-DOPENOSC_METRIC_OBJSIZE_ENABLED"
 
 You can run the oscmetrics tool to collect the OSC-METRICS:
 
-    $ tools/oscmetrics.py -bwv -d your-dir > metrics-report.txt
+    $ tools/oscmetrics.py -bmwv -d your-dir > metrics-report.txt
 
 One trick: To generate the binary even when buffer overflow errors exist, add
 “-DOPENOSC_OVERFLOW_ERROR_OUT_DISABLE” to CFLAGS. This will just print warnings
@@ -118,14 +118,14 @@ protected by different runtime libraries.
 
 How to Build OpenOSC Library
 ----------------------------
-The build system for the OpenOSC library is the well known *GNU build
-system*, a.k.a. Autotools. This system is well understood and supported
-by many different platforms and distributions which should allow this
-library to be built on a wide variety of platforms. See the
-``Tested Platforms'' section for details on what
-platforms this library was tested on during its development.
+The build system for the OpenOSC library is the well known GNU build system,
+a.k.a. Autotools. This system is well understood and supported by many
+different platforms and distributions which should allow this libary to be
+built on a wide variety of platforms. See the "Tested Platforms" section
+for details on what platforms this library was tested on during its
+development.
 
-* Building
+* *Building*
 
 For those familiar with autotools you can probably skip this part. For those
 not and want to get right to building the code see below. And, for those that
@@ -154,17 +154,19 @@ To build RedHat RPM packages:
     $ ./configure
     $ make rpm
 
-Two OpenOSC RPM packages are generated:
+A few OpenOSC RPM packages are generated:
 
 - openosc RPM contains only the runtime library.
 - openosc-devel RPM contains both runtime library and mapping header files.
+- openosc-static RPM contains static library.
+- openosc-tools RPM contains the tools to decode OSC tracebacks and collect OSC metrics.
 
 To build Debian/Ubuntu DEB packages:
 
     $ ./configure
     $ make deb
 
-* Installing
+* *Installing*
 
 Installation must be preformed by `root`, an `Administrator' on most
 systems. The following is used to install the library.
@@ -174,12 +176,13 @@ systems. The following is used to install the library.
 To install RedHat RPM packages:
 
     $ make rpm
-    $ sudo rpm -ivh openosc-devel-0.1.0-1.el7.x86_64.rpm
+    $ sudo rpm -ivh openosc-1.0.0-1.el7.x86_64.rpm
+    $ sudo rpm -ivh openosc-devel-1.0.0-1.el7.x86_64.rpm
 
 To install Debian/Ubuntu DEB packages:
 
     $ make deb
-    $ sudo apt install openosc_0.1.0-1_amd64.deb
+    $ sudo apt install openosc_1.0.0-1_amd64.deb
 
 How to Build Packages with OpenOSC Library
 ------------------------------------------
@@ -190,7 +193,7 @@ The following build changes are required to build a package with OpenOSC.
 
 Please install OpenOSC to your system before building your packages.
 
-* Mock build on Centos
+* *Mock build on Centos*
 
 In Centos, you can modify the redhat RPM-config macros to add OpenOSC flags
 to the global RPM configs so that all packages can pick up the global RPM
@@ -201,12 +204,13 @@ The mock tool is recommended to build RPM packages on Centos.
 Here is the steps to build OpenOSC-enabled RPM packages in mock:
  
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --init
+    mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --install openosc-1.0.0-1.el7.x86_64.rpm
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --install openosc-devel-1.0.0-1.el7.x86_64.rpm
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --copyin redhat-rpm-config-macros-openosc  usr/lib/rpm/redhat/macros
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm2
 
-* Enable the OSC-METRIC feature during package build
+* *Enable the OSC-METRIC feature during package build*
 
 Add below to CFLAGS to enable the OSC-METRIC feature for your package build:
 
@@ -215,7 +219,7 @@ Add below to CFLAGS to enable the OSC-METRIC feature for your package build:
 After building your packages, you can run the below oscmetrics.py script to
 collect the OSC-METRIC report:
 
-    $ oscmetrics.py -bwv -d directory-that-contains-your-binaries
+    $ oscmetrics.py -bmwv -d directory-that-contains-your-binaries
 
 Tested Platforms
 ----------------

@@ -94,23 +94,23 @@ tool to collect the OSC-METRICS:
     $ tools/oscmetrics.py -bmwv -d your-dir > metrics-report.txt
 
 One trick: To generate the binary even when buffer overflow errors exist, add
-“-DOPENOSC_OVERFLOW_ERROR_OUT_DISABLE” to CFLAGS. This will just print warnings
+`-DOPENOSC_OVERFLOW_ERROR_OUT_DISABLE` to CFLAGS. This will just print warnings
 instead of errors at compile-time so that binary can be generated. If you use
-"-DOPENOSC_MM=2" CFLAGS, then you can add "-DOPENOSC_METRIC_ONLY_MODE" to CFLAGS
+`-DOPENOSC_MM=2` CFLAGS, then you can add `-DOPENOSC_METRIC_ONLY_MODE` to CFLAGS
 to collect OSC metrics only.
 
 Trick #2: the oscmetrics.py tool ignores intermediate relocatable \*.o files by
-default. You can add "--scan_all_elf_files" option to force the tool to scan the
+default. You can add `--scan_all_elf_files` option to force the tool to scan the
 \*.o files too.
 
 Trick #3: for cross-compilation binaries, you may need to specify the location
 of cross-compilation tools: objdump, addr2line, etc. in a configfile, then run
-oscmetrics.py with "-c configfile" option to get correct results.
+oscmetrics.py with `-c configfile` option to get correct results.
 
 Relationship to FORTIFY_SOURCE
 ------------------------------
 Most compilers (gcc/clang/icc) provide the FORTIFY_SOURCE feature.
-It is enabled by adding -D_FORTIFY_SOURCE=2 option to CFLAGS.
+It is enabled by adding `-D_FORTIFY_SOURCE=2` option to CFLAGS.
 
     CFLAGS += "-D_FORTIFY_SOURCE=2"
 

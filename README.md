@@ -61,7 +61,7 @@ Two OSC function mapping methods are supported in OpenOSC:
     #define OPENOSC_FUNC_MACRO_REDEFINE_METHOD   2
 
 They are two different mapping methods. The ASM_LABEL_REDIRECT method uses
-"__asm__" label to redirect an alias function to the real function at assembly
+`__asm__` label to redirect an alias function to the real function at assembly
 language level, while keeping them as different functions at C language level.
 The FUNC_MACRO_REDEFINE method uses macro redefining mechanism to directly
 redefine a foo function as a new openosc_foo function at C language level.

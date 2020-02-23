@@ -99,6 +99,14 @@ instead of errors at compile-time so that binary can be generated. If you use
 "-DOPENOSC_MM=2" CFLAGS, then you can add "-DOPENOSC_METRIC_ONLY_MODE" to CFLAGS
 to collect OSC metrics only.
 
+Trick #2: the oscmetrics.py tool ignores intermediate relocatable \*.o files by
+default. You can add "--scan_all_elf_files" option to force the tool to scan the
+\*.o files too.
+
+Trick #3: for cross-compilation binaries, you may need to specify the location
+of cross-compilation tools: objdump, addr2line, etc. in a configfile, then run
+oscmetrics.py with "-c configfile" option to get correct results.
+
 Relationship to FORTIFY_SOURCE
 ------------------------------
 Most compilers (gcc/clang/icc) provide the FORTIFY_SOURCE feature.
@@ -149,7 +157,7 @@ autotools, and then do:
     $ make
 
 That is, autoreconf only needs to be run if you are building from the git
-repository. Optionally, you can do "make check" if you want to run the unit
+repository. Optionally, you can do `make check` if you want to run the unit
 tests.
 
 To build RedHat RPM packages:
@@ -171,7 +179,7 @@ To build Debian/Ubuntu DEB packages:
 
 2. *Installing*
 
-Installation must be preformed by `root`, an `Administrator' on most
+Installation must be preformed by `root`, an `Administrator` on most
 systems. The following is used to install the library.
 
     $ sudo make install
@@ -235,13 +243,17 @@ with most available compilers (gcc/clang/icc).
 
 Note: Clang version >= 5.0 is required for ASM_LABEL_REDIRECT mapping method.
 Also, to get better compile-time errors/warnings, the function attributes of
-error/warning should be supported. The -fno-common option is recommended for
-Clang too for better detection of buffer overflows/overreads.
+error/warning should be supported by Clang. The -fno-common option is
+recommended for Clang too for better detection of buffer overflows/overreads.
 
 Known Issues
 ------------
 1. If you are building the library from the git repository you will have to
    first install autotools, then run autoreconf to create the configure script.
+
+2. OPENOSC_METRIC_FEATURE_ENABLED does not impact compilation performance.
+However, OPENOSC_METRIC_OBJSIZE_ENABLED impacts the compilation performance
+significantly, especially for Clang.
 
 References
 ----------

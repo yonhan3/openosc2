@@ -221,16 +221,17 @@ Here is the steps to build OpenOSC-enabled RPM packages in mock:
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm
     mock -r epel-7-x86_64 --rootdir=your-rootdir --resultdir=your-result-dir --no-clean --no-cleanup-after --rebuild your-srpm2
 
+The redhat-rpm-config-macros-openosc file has been modified to add the below:
+
+    __global_cflags += "-include openosc.h"
+    __global_ldflags += "-lopenosc"
+
 * *Enable the OSC-METRICS feature during package build*
 
 Add below to CFLAGS to enable the OSC-METRICS feature for your package build:
 
     CFLAGS += "-include openosc.h -DOPENOSC_METRIC_FEATURE_ENABLED"
 
-After building your packages, you can run the below oscmetrics.py script to
-collect the OSC-METRICS report:
-
-    $ oscmetrics.py -bmwv -d directory-that-contains-your-binaries
 
 Tested Platforms
 ----------------

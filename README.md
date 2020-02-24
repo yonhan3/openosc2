@@ -235,7 +235,7 @@ RPM spec file:
 
     # To enable OpenOSC build for your RPM package
     %global _openosc_build 1
-    
+
     # To disable OpenOSC build for your RPM package
     %undefine _openosc_build
 

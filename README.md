@@ -226,6 +226,19 @@ The redhat-rpm-config-macros-openosc file has been modified to add the below:
     __global_cflags += "-include openosc.h"
     __global_ldflags += "-lopenosc"
 
+Actually a new flag is defined to turn on/off OpenOSC build:
+
+    %_openosc_build 1
+
+Each package can choose to enable or disable OpenOSC build independently in its
+RPM spec file:
+
+    # To enable OpenOSC build for your RPM package
+    %global _openosc_build 1
+    
+    # To disable OpenOSC build for your RPM package
+    %undefine _openosc_build
+
 * *Enable the OSC-METRICS feature during package build*
 
 Add below to CFLAGS to enable the OSC-METRICS feature for your package build:

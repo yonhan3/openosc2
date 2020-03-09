@@ -126,6 +126,17 @@ can be compiled with OpenOSC, and some other packages/binaries can be compiled
 with FORTIFY_SOURCE. They can co-exist on the same Linux system, and will be
 protected by different runtime libraries.
 
+Here is a comparison summary table:
+
+| Behavior          | FORTIFY_SOURCE |       OpenOSC       |
+| ----------------- | -------------- | ------------------- |
+| OSC Metrics       | No support     | Supported           |
+| Source Overread   | No support     | Supported           |
+| Traceback?        | No traceback   | Print traceback     |
+| Abort behavior    | Always abort   | Configurable        |
+| Copy truncation   | No truncate    | Yes/Configurable    |
+| Logging           | No syslog      | Syslog/Configurable |
+| Cover new routine | Not easy       | Easy                |
 
 How to Build OpenOSC Library
 ----------------------------

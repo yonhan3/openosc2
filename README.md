@@ -128,7 +128,7 @@ protected by different runtime libraries.
 
 Here is a comparison summary table:
 
-| Behavior          | FORTIFY_SOURCE |       OpenOSC       |
+| Feature/Behavior  | FORTIFY_SOURCE |       OpenOSC       |
 | ----------------- | -------------- | ------------------- |
 | OSC Metrics       | No support     | Supported           |
 | Source Overread   | No support     | Supported           |

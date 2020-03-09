@@ -132,7 +132,7 @@ Here is a comparison summary table:
 | ----------------- | -------------- | ------------------- |
 | OSC Metrics       | No support     | Supported           |
 | Source Overread   | No support     | Supported           |
-| Traceback?        | No traceback   | Print traceback     |
+| Traceback         | No traceback   | Print traceback     |
 | Abort behavior    | Always abort   | Configurable        |
 | Copy truncation   | No truncate    | Yes/Configurable    |
 | Logging           | No syslog      | Syslog/Configurable |

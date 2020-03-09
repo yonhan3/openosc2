@@ -25,7 +25,7 @@ Overview
 
 OpenOSC is an open-source object size check library written in C. It has been
 developed in order to promote the use of compiler builtin object size check
-capability for enhanced security. It provides lightweight support for detecting
+capability for enhanced security. It provides robust support for detecting
 buffer overflows in various functions that perform operations on memory and
 strings. Not all types of buffer overflows can be detected with this library,
 but it does provide an extra level of validation for some functions that are
